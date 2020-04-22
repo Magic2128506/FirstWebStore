@@ -24,15 +24,16 @@ namespace FirstWebStore
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            app.UseStaticFiles();
+            app.UseDefaultFiles();
 
-            var greetings = Configuration["CustomGreetings"];
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync(greetings);
+                    await context.Response.WriteAsync(Configuration["CustomGreetings"]);
                 });
             });
         }
