@@ -6,12 +6,12 @@ namespace FirstWebStore.Controllers
     {
         public IActionResult Index()
         {
-            return Content("Home controller - action Index");
+            return View();
         }
 
         public IActionResult SomeAction()
         {
-            return Content("Home controller - action SomeAction");
+            return View();
         }
     }
 }
