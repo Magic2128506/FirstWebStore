@@ -1,18 +1,17 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model FirstWebStore.Models.Employee
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>SomeAction</title>
+    <title>Employee: №@Model.ID</title>
 </head>
 <body>
-    <h2>Спокойнее ты на верном пути!!!</h2>
-    <a href="/Home/Index">Домой</a>
+    <p>@Model.FirstName</p>
+
+    <hr />
+
     <a href="/Home/Employees">Список сотрудников</a>
 </body>
 </html>
