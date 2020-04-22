@@ -15,6 +15,7 @@ namespace FirstWebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(); // this is more than services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,10 +32,14 @@ namespace FirstWebStore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
+                endpoints.MapGet("/greetings", async context =>
                 {
                     await context.Response.WriteAsync(Configuration["CustomGreetings"]);
                 });
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
