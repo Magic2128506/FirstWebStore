@@ -15,7 +15,7 @@ namespace FirstWebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(); // this is more than services.AddMvc();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation(); // this is more than services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
