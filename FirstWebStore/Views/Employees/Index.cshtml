@@ -8,7 +8,7 @@
     <h3>@ViewData["Title"]</h3>
 
     <hr />
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="employees-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -36,3 +36,17 @@
         </tbody>
     </table>
 </div>
+
+@section Styles {
+<style>
+    #employees-table {
+        background: red;
+    }
+</style>
+}
+
+@section Scripts {
+    <script>
+        myscript
+    </script>
+}
