@@ -1,17 +1,9 @@
-﻿@model FirstWebStore.Models.Employee
+﻿@model Employee
 
-<!DOCTYPE html>
+    <div class="container">
+        <h3>@Model.FirstName</h3>
+        <p>@Model.SurName</p>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Employee: №@Model.ID</title>
-</head>
-<body>
-    <p>@Model.FirstName</p>
-
-    <hr />
-
-    <a href="/Home/Employees">Список сотрудников</a>
-</body>
-</html>
+        <hr />
+        <a asp-controller="Home" asp-action="Employees">Список сотрудников</a>
+    </div>

@@ -1,24 +1,25 @@
 ﻿<div class="mainmenu pull-left">
     <ul class="nav navbar-nav collapse navbar-collapse">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a asp-controller="Home" asp-action="Index" class="active">Главная</a></li>
         <li class="dropdown">
-            <a href="#">Shop<i class="fa fa-angle-down"></i></a>
+            <a href="#">Магазин<i class="fa fa-angle-down"></i></a>
             <ul role="menu" class="sub-menu">
-                <li><a href="shop.html">Products</a></li>
-                <li><a href="product-details.html">Product Details</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a asp-controller="Home" asp-action="shop">Каталог товаров</a></li>
+                <li><a asp-controller="Home" asp-action="productdetails">Детали товара</a></li>
+                <li><a asp-controller="Home" asp-action="checkout">Оформить заказ</a></li>
+                <li><a asp-controller="Home" asp-action="cart">Корзина</a></li>
+                <li><a asp-controller="Home" asp-action="login">Войти</a></li>
             </ul>
         </li>
         <li class="dropdown">
-            <a href="#">Blog<i class="fa fa-angle-down"></i></a>
+            <a href="#">Блоги<i class="fa fa-angle-down"></i></a>
             <ul role="menu" class="sub-menu">
-                <li><a href="blog.html">Blog List</a></li>
-                <li><a href="blog-single.html">Blog Single</a></li>
+                <li><a asp-controller="Home" asp-action="blog">Blog List</a></li>
+                <li><a asp-controller="Home" asp-action="blogsingle">Blog Single</a></li>
             </ul>
         </li>
-        <li><a href="404.html">404</a></li>
-        <li><a href="contact-us.html">Contact</a></li>
+        <li><a asp-controller="Home" asp-action="error404">404</a></li>
+        <li><a asp-controller="Home" asp-action="contactus">Контакты</a></li>
+        <li><a asp-controller="Home" asp-action="Employees">Сотрудники</a></li>
     </ul>
 </div>
