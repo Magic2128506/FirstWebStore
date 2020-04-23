@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FirstWebStore.Models.Employee>
+﻿@model IEnumerable<Employee>
 
 
 
@@ -13,7 +13,7 @@
                 <td>@employee.Patronymic</td>
                 <td>@employee.Age</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@employee.ID">Открыть</a>
+                    <a asp-action="Employee" asp-route-id="@employee.ID">Открыть</a>
                 </td>
             </tr>
         }

@@ -50,7 +50,7 @@ namespace FirstWebStore.Controllers
             return View(_Employees);
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Employee(int id)
         {
             var employee = _Employees.FirstOrDefault(x => x.ID == id);
 
@@ -59,5 +59,23 @@ namespace FirstWebStore.Controllers
 
             return View(employee);
         }
+
+        public IActionResult Error404() => View();
+
+        public IActionResult Blog() => View();
+
+        public IActionResult BlogSingle() => View();
+
+        public IActionResult Cart() => View();
+
+        public IActionResult CheckOut() => View();
+
+        public IActionResult ContactUs() => View();
+
+        public IActionResult Login() => View();
+
+        public IActionResult Shop() => View();
+
+        public IActionResult ProductDetails() => View();
     }
 }
