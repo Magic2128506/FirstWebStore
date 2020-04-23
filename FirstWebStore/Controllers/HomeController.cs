@@ -50,7 +50,7 @@ namespace FirstWebStore.Controllers
             return View(_Employees);
         }
 
-        public IActionResult Employee(int id)
+        public IActionResult Details(int id)
         {
             var employee = _Employees.FirstOrDefault(x => x.ID == id);
 
