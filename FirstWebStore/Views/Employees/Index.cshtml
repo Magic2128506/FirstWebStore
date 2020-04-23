@@ -1,6 +1,13 @@
 ﻿@model IEnumerable<Employee>
 
+@{
+    ViewData["Title"] = "Сотрудники";
+}
+
 <div class="container">
+    <h3>@ViewData["Title"]</h3>
+
+    <hr />
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -22,7 +29,7 @@
                     <td>@employee.Patronymic</td>
                     <td>@employee.Age</td>
                     <td>
-                        <a asp-controller="Home" asp-action="Employee" asp-route-id="@employee.ID">Открыть</a>
+                        <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.ID">Открыть</a>
                     </td>
                 </tr>
             }
