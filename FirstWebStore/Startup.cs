@@ -1,3 +1,5 @@
+﻿using FirstWebStore.Infrastructure.Interfaces;
+using FirstWebStore.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +18,10 @@ namespace FirstWebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation(); // this is more than services.AddMvc();
+
+            //services.AddTransient<IEmployeesData, InMemoryEmployeesData>(); // Каждый раз будет создаваться экземпляр сервиса
+            //services.AddScoped<IEmployeesData, InMemoryEmployeesData>(); // Один экземпляр на область видимости
+            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>(); // Один объект на все время жизни приложения
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
