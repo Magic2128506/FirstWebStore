@@ -30,6 +30,26 @@ namespace FirstWebStore.Controllers
             return View(employee);
         }
 
+        public IActionResult Create()
+        {
+            return View(new Employee());
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            if (employee is null)
+                throw new ArgumentNullException(nameof(Employee));
+
+            if (!ModelState.IsValid)
+                return View(employee);
+
+            _EmployeesData.Add(employee);
+            _EmployeesData.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Edit(int? id)
         {
             if (id is null)

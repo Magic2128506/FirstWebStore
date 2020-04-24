@@ -6,7 +6,8 @@
 
 <div class="container">
     <h3>@ViewData["Title"]</h3>
-
+    <a asp-controller="Employees" asp-action="Edit" class="btn btn-success">Добавить сотрудника через Edit</a>
+    <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Добавить сотрудника через Create</a>
     <hr />
     <table class="table table-bordered" id="employees-table">
         <thead>
@@ -37,7 +38,6 @@
                     </td>
                 </tr>
             }
-        <a asp-controller="Employees" asp-action="Edit">Добавить сотрудника</a>
         </tbody>
     </table>
 </div>
