@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FirstWebStore.Controllers
 {
+    //[Route("users")]
     public class EmployeesController : Controller
     {
         private static readonly List<Employee> _Employees = new List<Employee>()
@@ -35,8 +36,10 @@ namespace FirstWebStore.Controllers
             }
         };
 
+        //[Route("")]
         public IActionResult Index() => View(_Employees);
 
+        //[Route("id/{id}")]
         public IActionResult Details(int id)
         {
             var employee = _Employees.FirstOrDefault(x => x.ID == id);
