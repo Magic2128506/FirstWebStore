@@ -1,40 +1,9 @@
-﻿using FirstWebStore.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace FirstWebStore.Controllers
 {
     public class HomeController : Controller
     {
-        private static readonly List<Employee> _Employees = new List<Employee>()
-        {
-            new Employee
-            {
-                ID = 1,
-                FirstName = "Nasibullin",
-                SurName = "Timur",
-                Patronymic = "Radimovich",
-                Age = 29
-            },
-            new Employee
-            {
-                ID = 2,
-                FirstName = "Haidarshin",
-                SurName = "Adel",
-                Patronymic = "Valerevich",
-                Age = 25
-            },
-            new Employee
-            {
-                ID = 3,
-                FirstName = "Vahitov",
-                SurName = "Roman",
-                Patronymic = "Olegovich",
-                Age = 27
-            }
-        };
-
         public IActionResult Index()
         {
             return View();
@@ -45,19 +14,22 @@ namespace FirstWebStore.Controllers
             return View();
         }
 
-        public IActionResult Employees()
-        {
-            return View(_Employees);
-        }
+        public IActionResult Error404() => View();
 
-        public IActionResult Employee(int id)
-        {
-            var employee = _Employees.FirstOrDefault(x => x.ID == id);
+        public IActionResult Blog() => View();
 
-            if (employee == null)
-                return NotFound();
+        public IActionResult BlogSingle() => View();
 
-            return View(employee);
-        }
+        public IActionResult Cart() => View();
+
+        public IActionResult CheckOut() => View();
+
+        public IActionResult ContactUs() => View();
+
+        public IActionResult Login() => View();
+
+        public IActionResult Shop() => View();
+
+        public IActionResult ProductDetails() => View();
     }
 }
