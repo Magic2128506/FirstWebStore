@@ -59,7 +59,7 @@ namespace FirstWebStore.Infrastructure.Services
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

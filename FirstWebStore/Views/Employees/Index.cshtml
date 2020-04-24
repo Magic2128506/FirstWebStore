@@ -17,6 +17,7 @@
                 <th>Отчество</th>
                 <th>Возраст</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -31,18 +32,22 @@
                     <td>
                         <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.ID">Открыть</a>
                     </td>
+                    <td>
+                        <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.ID">Внести изменения</a>
+                    </td>
                 </tr>
             }
+        <a asp-controller="Employees" asp-action="Edit">Добавить сотрудника</a>
         </tbody>
     </table>
 </div>
 
 @section Styles {
-<style>
-    #employees-table {
-        background: #F0F0E9;
-    }
-</style>
+    <style>
+        #employees-table {
+            background: #F0F0E9;
+        }
+    </style>
 }
 
 @section Scripts {
