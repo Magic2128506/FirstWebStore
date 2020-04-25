@@ -86,5 +86,26 @@ namespace FirstWebStore.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            if (id <= 0)
+                return BadRequest();
+
+            var employee = _EmployeesData.GetById(id);
+
+            if (employee is null)
+                return NotFound();
+
+            return View(employee);
+        }
+
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _EmployeesData.Delete(id);
+            _EmployeesData.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -36,6 +36,9 @@
                     <td>
                         <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.ID">Внести изменения</a>
                     </td>
+                    <td>
+                        <a asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.ID" class="text-danger">Удалить</a>
+                    </td>
                 </tr>
             }
         </tbody>
