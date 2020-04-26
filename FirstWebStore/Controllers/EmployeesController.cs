@@ -102,6 +102,9 @@ namespace FirstWebStore.Controllers
             if (employee is null)
                 throw new ArgumentNullException(nameof(Employee));
 
+            if (employee.Name == "ааа" && employee.Age == 20)
+                ModelState.AddModelError("Name", "Странный человек");
+
             if (!ModelState.IsValid)
                 return View(employee);
 
