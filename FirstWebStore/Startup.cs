@@ -22,6 +22,7 @@ namespace FirstWebStore
             //services.AddTransient<IEmployeesData, InMemoryEmployeesData>(); // Каждый раз будет создаваться экземпляр сервиса
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>(); // Один экземпляр на область видимости
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>(); // Один объект на все время жизни приложения
+            services.AddSingleton<IProductData, InMemoruProductData>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

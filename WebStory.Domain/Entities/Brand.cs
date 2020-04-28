@@ -7,7 +7,7 @@ using WebStory.Domain.Entities.Base.Interfaces;
 namespace WebStory.Domain.Entities
 {
     /// <summary>Бренд</summary>
-    class Brand : NamedEntity, IOrderedEntity
+    public class Brand : NamedEntity, IOrderedEntity
     {
         public int Order { get; set; }
     }
