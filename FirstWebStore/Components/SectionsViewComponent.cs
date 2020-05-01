@@ -35,7 +35,7 @@ namespace FirstWebStore.Components
                 })
                 .ToList();
 
-            foreach (var parentSection in parentSectionsView)
+            foreach (var parentSection in parentSections)
             {
                 var childs = sections.Where(x => x.ParentId == parentSection.ID);
 
