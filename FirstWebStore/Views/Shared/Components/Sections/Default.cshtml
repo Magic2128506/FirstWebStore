@@ -22,7 +22,9 @@
                             @foreach (var child in parentSection.ChildSections)
                             {
                                 <li>
-                                    <a href="#">@child.Name</a>
+                                    <a href="#">
+                                        @child.Name
+                                    </a>
                                 </li>
                             }
                         </ul>
@@ -34,7 +36,11 @@
         {
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">@parentSection.Name</a></h4>
+                    <h4 class="panel-title">
+                        <a href="#">
+                            @parentSection.Name
+                        </a>
+                    </h4>
                 </div>
             </div>
         }

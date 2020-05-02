@@ -35,7 +35,7 @@ namespace FirstWebStore.Components
                 })
                 .ToList();
 
-            foreach (var parentSection in parentSections)
+            foreach (var parentSection in parentSectionsView)
             {
                 var childs = sections.Where(x => x.ParentId == parentSection.ID);
 
@@ -48,9 +48,9 @@ namespace FirstWebStore.Components
                         Order = child.Order,
                         ParentSection = parentSection
                     });
-
-                    parentSection.ChildSections.Sort((a, b) => Comparer<int>.Default.Compare(a.Order, b.Order));
                 }
+
+                parentSection.ChildSections.Sort((a, b) => Comparer<int>.Default.Compare(a.Order, b.Order));
             }
 
             parentSectionsView.Sort((a, b) => Comparer<int>.Default.Compare(a.Order, b.Order));
