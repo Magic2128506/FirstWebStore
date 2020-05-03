@@ -1,18 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace FirstWebStore.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
-        public IActionResult SomeAction()
-        {
-            return View();
-        }
+        public IActionResult Throw(string id) => throw new ApplicationException(id);
+
+        public IActionResult SomeAction() => View();
 
         public IActionResult Error404() => View();
 
@@ -27,9 +24,5 @@ namespace FirstWebStore.Controllers
         public IActionResult ContactUs() => View();
 
         public IActionResult Login() => View();
-
-        public IActionResult Shop() => View();
-
-        public IActionResult ProductDetails() => View();
     }
 }
