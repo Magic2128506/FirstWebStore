@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WebStory.Domain.Entities.Base.Interfaces;
+﻿using WebStory.Domain.Entities.Base.Interfaces;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebStory.Domain.Entities.Base
 {
-    /// <summary>
-    /// Базовая сущность
-    /// </summary>
+    /// <summary>Базовая сущность</summary>
     public abstract class BaseEntity : IBaseEntity
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-    }
-
-    public abstract class NamedEntity : BaseEntity, INamedEntity
-    {
-        public string Name { get; set; }
     }
 }
