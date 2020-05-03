@@ -7,7 +7,7 @@
             @foreach (var brand in Model)
             {
                 <li>
-                    <a href="#">
+                    <a asp-controller="Catalog" asp-action="Shop" asp-route-BrandId="@brand.ID">
                         <span class="pull-right">(50)</span>@brand.Name
                     </a>
                 </li>
