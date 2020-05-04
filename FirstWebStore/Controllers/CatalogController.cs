@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FirstWebStore.Infrastructure.Interfaces;
+using FirstWebStore.Infrastructure.Mapping;
 using FirstWebStore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using WebStory.Domain.Entities;
@@ -33,14 +34,8 @@ namespace FirstWebStore.Controllers
                 SectionId = SectionId,
                 BrandId = BrandId,
                 Products = products
-                    .Select(p => new ProductViewModel
-                    {
-                        ID = p.ID,
-                        Name = p.Name,
-                        ImageUrl = p.ImageUrl,
-                        Order = p.Order,
-                        Price = p.Price
-                    })
+                    //.Select(p => p.ToView()) - строка ниже одно и то же
+                    .Select(ProductMapping.ToView)
                     .OrderBy(p => p.Order)
             });
         }
