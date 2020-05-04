@@ -19,5 +19,7 @@ namespace WebStory.Domain.Entities
         public int? BrandId { get; set; }
         [ForeignKey(nameof(BrandId))]
         public virtual  Brand Brand { get; set; }
+
+        public string Description { get; set; }
     }
 }
