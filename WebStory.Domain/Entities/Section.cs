@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using WebStory.Domain.Entities.Base;
 using WebStory.Domain.Entities.Base.Interfaces;
 
@@ -12,5 +11,10 @@ namespace WebStory.Domain.Entities
         public int Order { get; set; }
         /// <summary>Идентификатор родительской секции</summary>
         public int? ParentId { get; set; }
+
+        [ForeignKey(nameof(ParentId))]
+        public virtual Section ParentSection { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

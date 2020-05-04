@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebStory.Domain.Entities;
 
-namespace FirstWebStore.Infrastructure.Services
+namespace FirstWebStore.Infrastructure.Services.InMemory
 {
     public class InMemoruProductData : IProductData
     {
