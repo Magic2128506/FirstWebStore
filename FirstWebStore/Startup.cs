@@ -1,6 +1,6 @@
 ﻿using FirstWebStore.Data;
 using FirstWebStore.Infrastructure.Interfaces;
-using FirstWebStore.Infrastructure.Services;
+using FirstWebStore.Infrastructure.Services.InMemory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

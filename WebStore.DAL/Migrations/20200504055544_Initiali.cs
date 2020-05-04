@@ -2,6 +2,12 @@
 
 namespace WebStore.DAL.Migrations
 {
+    /// <summary>
+    /// Миграция
+    /// Add-Migration Initiali -v
+    /// Update-Database Initiali -v
+    /// -v включает логирование каждого шага
+    /// </summary>
     public partial class Initiali : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
