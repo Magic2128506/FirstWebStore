@@ -1,11 +1,14 @@
-﻿using FirstWebStore.Infrastructure.Interfaces;
+﻿using FirstWebStore.Data;
+using FirstWebStore.Infrastructure.Interfaces;
 using FirstWebStore.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.DAL.Context;
 
 namespace FirstWebStore
 {
@@ -17,6 +20,10 @@ namespace FirstWebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<WebStoreDB>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<WebStoreDBInitializer>();
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation(); // this is more than services.AddMvc();
 
             //services.AddTransient<IEmployeesData, InMemoryEmployeesData>(); // Каждый раз будет создаваться экземпляр сервиса
@@ -25,8 +32,10 @@ namespace FirstWebStore
             services.AddSingleton<IProductData, InMemoruProductData>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDBInitializer db)
         {
+            db.Initialize();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

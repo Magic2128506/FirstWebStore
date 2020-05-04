@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WebStory.Domain.Entities
+﻿namespace WebStory.Domain.Entities
 {
     public class ProductFilter
     {
