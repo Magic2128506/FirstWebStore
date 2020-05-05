@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FirstWebStore.ViewModels.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FirstWebStore.Controllers
 {
@@ -6,12 +7,12 @@ namespace FirstWebStore.Controllers
     {
         public IActionResult Register()
         {
-            return View();
+            return View(new RegisterUserViewModel());
         }
 
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginViewModel());
         }
     }
 }
