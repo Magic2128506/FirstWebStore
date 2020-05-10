@@ -22,7 +22,5 @@ namespace FirstWebStore.Controllers
         public IActionResult CheckOut() => View();
 
         public IActionResult ContactUs() => View();
-
-        public IActionResult Login() => View();
     }
 }

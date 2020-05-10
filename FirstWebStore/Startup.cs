@@ -1,15 +1,18 @@
-﻿using FirstWebStore.Data;
+﻿using System;
+using FirstWebStore.Data;
 using FirstWebStore.Infrastructure.Interfaces;
 using FirstWebStore.Infrastructure.Services.InMemory;
 using FirstWebStore.Infrastructure.Services.InSQL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStore.DAL.Context;
+using WebStory.Domain.Entities.Identity;
 
 namespace FirstWebStore
 {
@@ -24,6 +27,40 @@ namespace FirstWebStore
             services.AddDbContext<WebStoreDB>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<WebStoreDBInitializer>();
+
+            //services.AddIdentity<IdentityUser, IdentityRole>();
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<WebStoreDB>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(opt =>
+            {
+                opt.Password.RequiredLength = 3; // Минимальное количество символов для пароля
+                opt.Password.RequireDigit = false; // Выключили требования наличия в пароле цифр
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredUniqueChars = 3; // Пароль должен содержать разные 3 буквы
+
+                opt.User.RequireUniqueEmail = false; // Требует уникальный емайл
+
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.MaxFailedAccessAttempts = 7;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+            });
+
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.Cookie.Name = "WebStore";
+                opt.Cookie.HttpOnly = true;
+                opt.ExpireTimeSpan = TimeSpan.FromDays(10);
+
+                opt.LoginPath = "/Account/Login";
+                opt.LogoutPath = "/Account/Logout";
+                opt.AccessDeniedPath = "/Account/AccesDenied";
+
+                opt.SlidingExpiration = true;
+            });
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation(); // this is more than services.AddMvc();
 
@@ -46,6 +83,8 @@ namespace FirstWebStore
 
             app.UseStaticFiles();
             app.UseDefaultFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 
