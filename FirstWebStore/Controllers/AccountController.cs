@@ -56,5 +56,7 @@ namespace FirstWebStore.Controllers
         {
             return View(new LoginViewModel());
         }
+
+        public IActionResult Logout() => RedirectToAction("Index", "Home");
     }
 }
