@@ -15,7 +15,8 @@ namespace FirstWebStore.Infrastructure.Mapping
             Name = product.Name,
             ImageUrl = product.ImageUrl,
             Order = product.Order,
-            Price = product.Price
+            Price = product.Price,
+            Brand = product.Brand?.Name
         };
 
         public static IEnumerable<ProductViewModel> ToView(this IEnumerable<Product> p) => p.Select(ToView);

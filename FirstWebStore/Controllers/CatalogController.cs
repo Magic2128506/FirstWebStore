@@ -40,9 +40,14 @@ namespace FirstWebStore.Controllers
             });
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var product = _ProductData.GetProductById(id);
+
+            if (product is null)
+                return NotFound();
+
+            return View(product.ToView());
         }
     }
 }
