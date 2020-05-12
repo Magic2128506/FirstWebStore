@@ -30,5 +30,7 @@ namespace FirstWebStore.Infrastructure.Services.InMemory
         }
 
         public IEnumerable<Section> GetSections() => TestData.Sections;
+
+        public Product GetProductById(int id) => TestData.Products.FirstOrDefault(x => x.ID == id);
     }
 }

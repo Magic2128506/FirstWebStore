@@ -31,11 +31,22 @@ namespace FirstWebStore.Infrastructure.Services.InSQL
                 query.Where(p => p.SectionId == filter.SectionId);
             }
 
+            if (filter?.Ids?.Count > 0)
+            {
+                query = query.Where(product => filter.Ids.Contains(product.ID));
+            }
+
             return query.AsEnumerable();
         }
 
         public IEnumerable<Section> GetSections() => _db.Sections
             .Include(section => section.Products)
             .AsEnumerable();
+
+        public Product GetProductById(int id) => _db.Products
+            .Include(p => p.Brand)
+            .Include(p => p.Section)
+            .FirstOrDefault(p => p.ID == id);
+
     }
 }

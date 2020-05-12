@@ -6,8 +6,13 @@
 
 <div class="container">
     <h3>@ViewData["Title"]</h3>
-    <a asp-controller="Employees" asp-action="Edit" class="btn btn-success">Добавить сотрудника через Edit</a>
-    <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Добавить сотрудника через Create</a>
+
+    @if (User.IsInRole(WebStory.Domain.Entities.Identity.Role.Administrator))
+    {
+        <a asp-controller="Employees" asp-action="Edit" class="btn btn-success">Добавить сотрудника через Edit</a>
+        <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Добавить сотрудника через Create</a>
+    }
+
     <hr />
     <table class="table table-bordered" id="employees-table">
         <thead>
@@ -18,7 +23,12 @@
                 <th>Отчество</th>
                 <th>Возраст</th>
                 <th></th>
-                <th></th>
+
+                @if (User.IsInRole(WebStory.Domain.Entities.Identity.Role.Administrator))
+                {
+                    <th></th>
+                    <th></th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -33,12 +43,16 @@
                     <td>
                         <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.ID">Открыть</a>
                     </td>
-                    <td>
-                        <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.ID">Внести изменения</a>
-                    </td>
-                    <td>
-                        <a asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.ID" class="text-danger">Удалить</a>
-                    </td>
+
+                    @if (User.IsInRole(WebStory.Domain.Entities.Identity.Role.Administrator))
+                    {
+                        <td>
+                            <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.ID">Внести изменения</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.ID" class="text-danger">Удалить</a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

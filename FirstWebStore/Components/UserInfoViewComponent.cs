@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace FirstWebStore.Components
 {
@@ -12,5 +8,11 @@ namespace FirstWebStore.Components
             => User.Identity?.IsAuthenticated == true
             ? View("UserInfo")
             : View();
+
+        //public IViewComponentResult Invoke() => User.Identity?.IsAuthenticated == true
+        //    ? User.IsInRole(Role.Administrator)
+        //        ? View("AdminInfo")
+        //        : View("UserInfo")
+        //    : View();
     }
 }
