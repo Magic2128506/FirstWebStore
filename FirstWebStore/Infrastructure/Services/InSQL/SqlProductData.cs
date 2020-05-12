@@ -31,6 +31,11 @@ namespace FirstWebStore.Infrastructure.Services.InSQL
                 query.Where(p => p.SectionId == filter.SectionId);
             }
 
+            if (filter?.Ids?.Count > 0)
+            {
+                query = query.Where(product => filter.Ids.Contains(product.ID));
+            }
+
             return query.AsEnumerable();
         }
 
