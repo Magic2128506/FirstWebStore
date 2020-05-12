@@ -1,6 +1,7 @@
 ﻿using System;
 using FirstWebStore.Data;
 using FirstWebStore.Infrastructure.Interfaces;
+using FirstWebStore.Infrastructure.Services.InCookies;
 using FirstWebStore.Infrastructure.Services.InMemory;
 using FirstWebStore.Infrastructure.Services.InSQL;
 using Microsoft.AspNetCore.Builder;
@@ -69,6 +70,7 @@ namespace FirstWebStore
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>(); // Один объект на все время жизни приложения
             //services.AddSingleton<IProductData, InMemoruProductData>();
             services.AddScoped<IProductData, SqlProductData>();
+            services.AddScoped<ICartService, CookiesCartService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDBInitializer db)
